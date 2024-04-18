@@ -892,9 +892,9 @@ public class BankMenu extends javax.swing.JFrame {
                
 
             } else {
-                JOptionPane.showMessageDialog(null, "Going back to Menu Page...");
-                BankMenu bank = new BankMenu();
-                bank.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Going back to Login Page...");
+                LogIn login = new LogIn();
+                login.setVisible(true);
                 
             }   
     }//GEN-LAST:event_exitButton1ActionPerformed
