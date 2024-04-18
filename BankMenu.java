@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -26,7 +27,7 @@ public class BankMenu extends javax.swing.JFrame {
         koquetteBack = new javax.swing.JLabel();
         stripePanel1 = new javax.swing.JPanel();
         stripePanel2 = new javax.swing.JPanel();
-        exitButton = new javax.swing.JButton();
+        historyButton = new javax.swing.JButton();
         withdrawButton = new javax.swing.JButton();
         depositButton = new javax.swing.JButton();
         transferButton = new javax.swing.JButton();
@@ -75,6 +76,12 @@ public class BankMenu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         clearTransferFields = new javax.swing.JButton();
         transferAmountButton = new javax.swing.JButton();
+        historyPanel = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        historyTable = new javax.swing.JTable();
+        exitButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BanKoquette Menu");
@@ -136,16 +143,16 @@ public class BankMenu extends javax.swing.JFrame {
 
         menuPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 490, 100));
 
-        exitButton.setBackground(new java.awt.Color(255, 185, 185));
-        exitButton.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        exitButton.setForeground(new java.awt.Color(255, 255, 255));
-        exitButton.setText("Exit");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
+        historyButton.setBackground(new java.awt.Color(255, 153, 153));
+        historyButton.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        historyButton.setForeground(new java.awt.Color(255, 255, 255));
+        historyButton.setText("History");
+        historyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
+                historyButtonActionPerformed(evt);
             }
         });
-        menuPanel.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 102, 35));
+        menuPanel.add(historyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 102, 35));
 
         withdrawButton.setBackground(new java.awt.Color(255, 153, 153));
         withdrawButton.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -607,7 +614,67 @@ public class BankMenu extends javax.swing.JFrame {
 
         menuTabbedPane.addTab("", transferPanel);
 
-        menuPanel.add(menuTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 25, 330, -1));
+        jPanel7.setBackground(new java.awt.Color(255, 189, 189));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel8.setText("TRANSACTION HISTORY");
+        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 14, -1, -1));
+
+        historyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Transaction"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        historyTable.setSelectionBackground(new java.awt.Color(255, 214, 214));
+        historyTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(historyTable);
+        if (historyTable.getColumnModel().getColumnCount() > 0) {
+            historyTable.getColumnModel().getColumn(0).setResizable(false);
+            historyTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 35, 304, 171));
+
+        javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
+        historyPanel.setLayout(historyPanelLayout);
+        historyPanelLayout.setHorizontalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        historyPanelLayout.setVerticalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(historyPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        menuTabbedPane.addTab("", historyPanel);
+
+        menuPanel.add(menuTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 25, 330, 260));
+
+        exitButton1.setBackground(new java.awt.Color(255, 185, 185));
+        exitButton1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        exitButton1.setForeground(new java.awt.Color(255, 255, 255));
+        exitButton1.setText("Exit");
+        exitButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButton1ActionPerformed(evt);
+            }
+        });
+        menuPanel.add(exitButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 102, 35));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -624,22 +691,10 @@ public class BankMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+    private void historyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyButtonActionPerformed
         
-        dispose(); //disposes menu page
-        
-        int reply = JOptionPane.showConfirmDialog(this, "Exit Application?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        
-            if (reply == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(this, "Exiting Application...\nThank You for your time!");
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Going back to Menu...");
-                BankMenu menu = new BankMenu();
-                menu.setVisible(true);
-                menuTabbedPane.setSelectedIndex(0); //goes back to default tab
-            }   
-    }//GEN-LAST:event_exitButtonActionPerformed
+        menuTabbedPane.setSelectedIndex(4);  
+    }//GEN-LAST:event_historyButtonActionPerformed
 
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
         //goes to withdraw tab
@@ -697,11 +752,13 @@ public class BankMenu extends javax.swing.JFrame {
                         bank.withdraw(withdrawAmount);
                         JOptionPane.showMessageDialog(this,"Php " + withdrawAmount + " Successfully Withdrawn!\n\nCurrent Balance: Php " + bank.getBalance() + "\nGoing back to menu page...", "Withdrawal Successful", JOptionPane.INFORMATION_MESSAGE);
                     
+                        String history = "Withdrew Php " + withdrawAmount;
+                        transactions(history);
                         amountTF.setText("");
                         menuTabbedPane.setSelectedIndex(0);
                         
                     }else {
-                        JOptionPane.showMessageDialog(this, "Cancelling transaction...\nGoing back to menu...", "Cancel Withdraw", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Cancelling transaction...", "Cancel Withdraw", JOptionPane.INFORMATION_MESSAGE);
                         amountTF.setText("");
                     }
                     
@@ -743,11 +800,13 @@ public class BankMenu extends javax.swing.JFrame {
                         bank.deposit(depositAmount);
                         JOptionPane.showMessageDialog(this,"Php " + depositAmount + " Successfully Deposited!\n\nCurrent Balance: Php " + bank.getBalance() + "\nGoing back to menu page...", "Deposit Successful", JOptionPane.INFORMATION_MESSAGE);
 
+                        String history = "Deposited Php " + depositAmount;
+                        transactions(history);
                         depositAmountTF.setText("");
                         menuTabbedPane.setSelectedIndex(0);
 
                     } else {
-                        JOptionPane.showMessageDialog(this, "Cancelling transaction...\nGoing back to menu...", "Cancel Deposit", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Cancelling transaction...", "Cancel Deposit", JOptionPane.INFORMATION_MESSAGE);
                         depositAmountTF.setText("");
                         
                     }
@@ -803,12 +862,15 @@ public class BankMenu extends javax.swing.JFrame {
                             bank.withdraw(transferAmount);
                             JOptionPane.showMessageDialog(this,"Php " + transferAmount + " Successfully Transferred to: " + "\nAccount Name: Errol\nAccount Number: " + accNumTF.getText() + "\n\nCurrent Balance: Php " + bank.getBalance() + "\nGoing back to menu page...", "Transfer Successful", JOptionPane.INFORMATION_MESSAGE);
 
+                            String history = "Transferred Php " + transferAmount;
+                            transactions(history);
+                            
                             transferAmountTF.setText("");
                             accNumTF.setText("");
                             menuTabbedPane.setSelectedIndex(0);
 
                         } else {
-                            JOptionPane.showMessageDialog(this, "Cancelling transaction...\nGoing back to menu...", "Cancel Transfer", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Cancelling transaction...", "Cancel Transfer", JOptionPane.INFORMATION_MESSAGE);
                             transferAmountTF.setText("");
                             accNumTF.setText("");
 
@@ -819,6 +881,32 @@ public class BankMenu extends javax.swing.JFrame {
    
     }//GEN-LAST:event_transferAmountButtonActionPerformed
 
+    private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose(); //disposes the login page
+        
+        int reply = JOptionPane.showConfirmDialog(this, "Exit Application?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        
+            if (reply == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(this, "Exiting Application...\nThank You for your time!");
+               
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Going back to Menu Page...");
+                BankMenu bank = new BankMenu();
+                bank.setVisible(true);
+                
+            }   
+    }//GEN-LAST:event_exitButton1ActionPerformed
+
+    public int i = 1;
+    public void transactions(String a) {
+        Object[] data = {i, a};
+        DefaultTableModel tableModel = (DefaultTableModel) historyTable.getModel();
+        tableModel.addRow(new Object[]{i,a});
+        i++;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -867,7 +955,10 @@ public class BankMenu extends javax.swing.JFrame {
     private javax.swing.JLabel depositLabel;
     private javax.swing.JPanel depositPanel;
     private javax.swing.JPanel dpPanel1;
-    private javax.swing.JButton exitButton;
+    private javax.swing.JButton exitButton1;
+    private javax.swing.JButton historyButton;
+    private javax.swing.JPanel historyPanel;
+    private javax.swing.JTable historyTable;
     private javax.swing.JButton inquireButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -876,11 +967,14 @@ public class BankMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel koquetteBack;
     private javax.swing.JLabel koquetteBack1;
     private javax.swing.JLabel koquetteFront;
